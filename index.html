@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <form>
+        <textarea name="tweet" rows="7" cols="40"></textarea>
+        <input type="submit" value="tweet">
+        </form>
+        <div id="tweetpane" style="width:300px;"></div>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript">
+            $('form').submit(function(){
+                var data = $('form').serializeArray();
+                $.ajax({
+                    url:         '/tweet',
+                    type:        'post',
+                    dataType:    'json',
+                    contentType: 'application; charset=utf-8',
+                    data:        JSON.stringify(data)
+                });
+                $('textarea[name="tweet"]').val("");
+                $.ajax({
+                    url:        '/tweet',
+                    type:       'get',
+//                    dataType:   'json',
+                    contentType:'application; charset=utf-8',
+                    success:    function(data){
+                                    const datas = JSON.parse(data);
+                                    datas.reverse();
+                                    $("#tweetpane").empty();
+                                    for(const data of datas){
+                                        $("#tweetpane").append('<div style="word-wrap:break-word;">' + data.value +'</div>');
+                                    }
+                                },
+                });
+                return false;
+            });
+        </script>
+    </body>
+</html>

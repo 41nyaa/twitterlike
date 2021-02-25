@@ -1,5 +1,5 @@
 This project is a simple web server coded in Rust.
-![build status](https://github.com/41nya/twitterlike/actions/workflows/main.yml/badge.svg)
+![build status](https://github.com/41nya/twitterlike/actions/workflows/rust.yml/badge.svg)
 
 Usage
 ---

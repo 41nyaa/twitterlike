@@ -11,9 +11,9 @@ fn main() -> Result<()> {
         server::start_server()
     });
 
-    let result_view = MainWindow::run(Settings::default());
+    let _ = MainWindow::run(Settings::default());
 
-    let result_server = server.join();
+    let _ = server.join();
 
     Ok(())
 }

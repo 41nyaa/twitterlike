@@ -4,7 +4,7 @@ use iced::{
     Sandbox, Element, Row, Length, scrollable,
     Scrollable, TextInput, text_input
 };
-use client::{Tweet, post_tweet};
+use client::{Tweet};
 
 pub struct MainWindow {
     pub tweets : Vec<Tweet>,

@@ -54,7 +54,7 @@ impl HttpHandler{
     pub fn post_tweet(&self, buffer : &[u8]) -> Vec<u8> {
         println!("{}", std::str::from_utf8(&buffer).unwrap());
         let mut headers_buffer = vec![http_bytes::EMPTY_HEADER; 20];
-        let (r, b) = http_bytes::parse_request_header(
+        let (_, b) = http_bytes::parse_request_header(
             buffer,
             &mut headers_buffer[..],
             Some(http_bytes::http::uri::Scheme::HTTP),
